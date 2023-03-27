@@ -20,7 +20,7 @@ export default function Map() {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       }}>
-      {/* <Sales /> */}
+      <Sales />
       <Marker
         coordinate={{
           latitude: 40.688615,
