@@ -1,6 +1,6 @@
 import React from 'react';
 import Realm from 'realm';
-import { createRealmContext } from '@realm/react';
+
 
 //define object model
 export class StoopSale extends Realm.Object = {
@@ -17,10 +17,6 @@ export class StoopSale extends Realm.Object = {
   }
 }
 
-//configuration
-const realmConfig = {
-  schema: [StoopSale],
-}
 
 //creat realm context
 const {RealmProvider, useRealm, useObject, useQuery} = createRealmContext(realmConfig);
