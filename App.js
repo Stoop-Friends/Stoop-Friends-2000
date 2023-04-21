@@ -43,7 +43,9 @@ export default function App() {
 
           title="POST A STOOP SALE"
           color="purple"
-          onPress={() => Alert.alert('look at you, you pressed the button')}
+          onPress={() => {
+            return Alert.alert('woo wee, you pressed the button');
+          }}
         />
       </View>
     </View>
