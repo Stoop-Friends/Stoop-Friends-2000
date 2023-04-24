@@ -7,7 +7,7 @@ export default function Map() {
   return (
     <MapView
       style={{flex: 10, margin: 30, borderRadius: 10}}
-      // provider={PROVIDER_GOOGLE}
+      provider={PROVIDER_GOOGLE}
       showsUserLocation={true}
       followsUserLocation={true}
       showsCompass={true}
