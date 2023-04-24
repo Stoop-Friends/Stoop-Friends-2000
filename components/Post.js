@@ -2,26 +2,70 @@ import React, {useState} from 'react';
 import {View, TextInput, StyleSheet, Button, Alert} from 'react-native';
 
 const Post = () => {
-  const [text, onChangeText] = useState('Example');
+  const [formInputs, onChangeText] = useState({
+    longitude: '',
+    lattitude: '',
+    where: '',
+    start: '',
+    end: '',
+    stuff: '',
+  });
   // const [number, onChangeNumber] = useState('');
+  // const [saleTitle, onChangeText] = useState('')
+
+  const handleSubmit = () => {
+    console.log(formInputs);
+    Alert.alert('woo wee, you pressed the button');
+    //write the info to the sales API
+  };
 
   return (
     <View>
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
-        value={text}
+        returnKeytype="next"
+        placeholder="longitude"
+        value={formInputs.longitude}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        placeholder="Longitude"
+        value={formInputs.lattitude}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        placeholder="where"
+        value={formInputs.where}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        placeholder="start time"
+        value={formInputs.start}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        placeholder="end time"
+        value={formInputs.end}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        placeholder="what they got??"
+        value={formInputs.stuff}
       />
 
       <View style={styles.button}>
         <Button
           // style={styles.fixToText}
 
-          title="POST A STOOP SALE"
+          title="SUBMIT THIS STOOP SALE"
           color="purple"
-          onPress={() => {
-            return Alert.alert('woo wee, you pressed the button');
-          }}
+          onPress={() => handleSubmit()}
         />
       </View>
     </View>
@@ -51,6 +95,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
+    textAlign: 'center',
   },
   button: {
     textAlign: 'center',
