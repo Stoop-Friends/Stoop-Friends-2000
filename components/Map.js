@@ -8,7 +8,6 @@ export default function Map() {
     <MapView
       style={{flex: 10, margin: 30, borderRadius: 10}}
       provider={PROVIDER_GOOGLE}
-      // provider='google'
       showsUserLocation={true}
       followsUserLocation={true}
       showsCompass={true}

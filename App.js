@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import Map from './components/Map';
-// import Post from './components/Post';
+import Post from './components/Post';
 // import {NavigationContainer} from '@react-navigation/native';
 
 // const Stack = createNativeStackNavigator();
@@ -37,7 +37,7 @@ export default function App() {
       {/* <StatusBar style="auto" /> */}
 
       <Map />
-      <View style={styles.button}>
+      {/* <View style={styles.button}>
         <Button
           // style={styles.fixToText}
 
@@ -47,7 +47,8 @@ export default function App() {
             return Alert.alert('woo wee, you pressed the button');
           }}
         />
-      </View>
+      </View> */}
+      <Post />
     </View>
     // </NavigationContainer>
   );
