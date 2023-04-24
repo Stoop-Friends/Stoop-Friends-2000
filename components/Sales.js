@@ -2,9 +2,6 @@ import React from 'react';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import {StyleSheet, Text, View} from 'react-native';
 
-import {realmContext} from './realmContext';
-// import {StoopSale} from '../db/salesSchema.js';
-
 const dummySales = [
   {
     id: 1,
