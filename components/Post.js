@@ -57,37 +57,41 @@ const Post = () => {
           returnKeytype="next"
           placeholder="longitude"
           defaultValue={formInputs.longitude}
-        />
-        {/* <TextInput
-          style={styles.input}
-          onChangeText={handleChange}
-          placeholder="Longitude"
-          value={formInputs.lattitude}
+          keyboardType="numeric"
         />
         <TextInput
           style={styles.input}
-          onChangeText={handleChange}
+          onChangeText={value =>
+            setFormInputs({...formInputs, lattitude: value})
+          }
+          placeholder="Lattitude"
+          defaultValue={formInputs.lattitude}
+          keyboardType="numeric"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={value => setFormInputs({...formInputs, where: value})}
           placeholder="where"
-          value={formInputs.where}
+          defaultValue={formInputs.where}
         />
         <TextInput
           style={styles.input}
-          onChangeText={handleChange}
+          onChangeText={value => setFormInputs({...formInputs, start: value})}
           placeholder="start time"
-          value={formInputs.start}
+          defaultValue={formInputs.start}
         />
         <TextInput
           style={styles.input}
-          onChangeText={handleChange}
+          onChangeText={value => setFormInputs({...formInputs, end: value})}
           placeholder="end time"
-          value={formInputs.end}
+          defaultValue={formInputs.end}
         />
         <TextInput
           style={styles.input}
-          onChangeText={handleChange}
+          onChangeText={value => setFormInputs({...formInputs, stuff: value})}
           placeholder="what they got??"
-          value={formInputs.stuff}
-        /> */}
+          defaultValue={formInputs.stuff}
+        />
 
         <View style={styles.button}>
           <Button
