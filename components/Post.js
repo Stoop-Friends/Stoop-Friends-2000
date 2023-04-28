@@ -1,5 +1,26 @@
 import React, {useState} from 'react';
 import {View, TextInput, StyleSheet, Button, Alert} from 'react-native';
+import Realm from 'realm';
+import {createRealmContext} from '@realm/react';
+
+class UserPost extends Realm.Object {
+  static schema = {
+    name: 'Post',
+    properties: {
+      _id: 'objectId',
+      name: 'string',
+      description: 'string',
+    },
+    primaryKey: '_id',
+  };
+}
+
+const realmConfig = {
+  schema: [UserPost],
+};
+
+const {RealmProvider, useRealm, useObject, useQuery} =
+  createRealmContext(realmConfig);
 
 const Post = () => {
   const [formInputs, onChangeText] = useState({
@@ -20,6 +41,8 @@ const Post = () => {
   };
 
   return (
+
+ <RealmProvider>
     <View>
       <TextInput
         style={styles.input}
@@ -59,16 +82,19 @@ const Post = () => {
         value={formInputs.stuff}
       />
 
-      <View style={styles.button}>
-        <Button
-          // style={styles.fixToText}
+
+        <View style={styles.button}>
+          <Button
+            // style={styles.fixToText}
+
 
           title="SUBMIT THIS STOOP SALE"
           color="purple"
           onPress={() => handleSubmit()}
         />
+
       </View>
-    </View>
+    </RealmProvider>
   );
 };
 
