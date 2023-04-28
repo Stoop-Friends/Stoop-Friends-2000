@@ -41,58 +41,55 @@ const Post = () => {
   };
 
   return (
-
- <RealmProvider>
-    <View>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        returnKeytype="next"
-        placeholder="longitude"
-        value={formInputs.longitude}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        placeholder="Longitude"
-        value={formInputs.lattitude}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        placeholder="where"
-        value={formInputs.where}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        placeholder="start time"
-        value={formInputs.start}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        placeholder="end time"
-        value={formInputs.end}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        placeholder="what they got??"
-        value={formInputs.stuff}
-      />
-
+    <RealmProvider>
+      <View>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          returnKeytype="next"
+          placeholder="longitude"
+          value={formInputs.longitude}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          placeholder="Longitude"
+          value={formInputs.lattitude}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          placeholder="where"
+          value={formInputs.where}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          placeholder="start time"
+          value={formInputs.start}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          placeholder="end time"
+          value={formInputs.end}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          placeholder="what they got??"
+          value={formInputs.stuff}
+        />
 
         <View style={styles.button}>
           <Button
             // style={styles.fixToText}
 
-
-          title="SUBMIT THIS STOOP SALE"
-          color="purple"
-          onPress={() => handleSubmit()}
-        />
-
+            title="SUBMIT THIS STOOP SALE"
+            color="purple"
+            onPress={() => handleSubmit()}
+          />
+        </View>
       </View>
     </RealmProvider>
   );
