@@ -23,7 +23,7 @@ const {RealmProvider, useRealm, useObject, useQuery} =
   createRealmContext(realmConfig);
 
 const Post = () => {
-  const [formInputs, onChangeText] = useState({
+  const [formInputs, setFormInputs] = useState({
     longitude: '',
     lattitude: '',
     where: '',
@@ -33,6 +33,11 @@ const Post = () => {
   });
   // const [number, onChangeNumber] = useState('');
   // const [saleTitle, onChangeText] = useState('')
+
+  // const handleChange = event => {
+  //   setFormInputs({...});
+  //   console.log(formInputs);
+  // };
 
   const handleSubmit = () => {
     console.log(formInputs);
@@ -44,41 +49,48 @@ const Post = () => {
     <RealmProvider>
       <View>
         <TextInput
+          name="longitude"
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={value =>
+            setFormInputs({...formInputs, longitude: value})
+          }
           returnKeytype="next"
           placeholder="longitude"
-          value={formInputs.longitude}
+          defaultValue={formInputs.longitude}
+          keyboardType="numeric"
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
-          placeholder="Longitude"
-          value={formInputs.lattitude}
+          onChangeText={value =>
+            setFormInputs({...formInputs, lattitude: value})
+          }
+          placeholder="Lattitude"
+          defaultValue={formInputs.lattitude}
+          keyboardType="numeric"
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={value => setFormInputs({...formInputs, where: value})}
           placeholder="where"
-          value={formInputs.where}
+          defaultValue={formInputs.where}
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={value => setFormInputs({...formInputs, start: value})}
           placeholder="start time"
-          value={formInputs.start}
+          defaultValue={formInputs.start}
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={value => setFormInputs({...formInputs, end: value})}
           placeholder="end time"
-          value={formInputs.end}
+          defaultValue={formInputs.end}
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={value => setFormInputs({...formInputs, stuff: value})}
           placeholder="what they got??"
-          value={formInputs.stuff}
+          defaultValue={formInputs.stuff}
         />
 
         <View style={styles.button}>
