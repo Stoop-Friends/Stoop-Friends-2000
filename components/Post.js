@@ -23,7 +23,7 @@ const {RealmProvider, useRealm, useObject, useQuery} =
   createRealmContext(realmConfig);
 
 const Post = () => {
-  const [formInputs, onChangeText] = useState({
+  const [formInputs, setFormInputs] = useState({
     longitude: '',
     lattitude: '',
     where: '',
@@ -33,6 +33,11 @@ const Post = () => {
   });
   // const [number, onChangeNumber] = useState('');
   // const [saleTitle, onChangeText] = useState('')
+
+  // const handleChange = event => {
+  //   setFormInputs({...});
+  //   console.log(formInputs);
+  // };
 
   const handleSubmit = () => {
     console.log(formInputs);
@@ -44,42 +49,45 @@ const Post = () => {
     <RealmProvider>
       <View>
         <TextInput
+          name="longitude"
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={value =>
+            setFormInputs({...formInputs, longitude: value})
+          }
           returnKeytype="next"
           placeholder="longitude"
-          value={formInputs.longitude}
+          defaultValue={formInputs.longitude}
         />
-        <TextInput
+        {/* <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={handleChange}
           placeholder="Longitude"
           value={formInputs.lattitude}
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={handleChange}
           placeholder="where"
           value={formInputs.where}
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={handleChange}
           placeholder="start time"
           value={formInputs.start}
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={handleChange}
           placeholder="end time"
           value={formInputs.end}
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={handleChange}
           placeholder="what they got??"
           value={formInputs.stuff}
-        />
+        /> */}
 
         <View style={styles.button}>
           <Button
