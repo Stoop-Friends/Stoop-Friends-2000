@@ -8,8 +8,12 @@ class UserPost extends Realm.Object {
     name: 'Post',
     properties: {
       _id: 'objectId',
-      name: 'string',
-      description: 'string',
+      longitude: 'number',
+      lattitude: 'number',
+      where: 'string',
+      start: 'string',
+      end: 'string',
+      stuff: 'string',
     },
     primaryKey: '_id',
   };
