@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, Button} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, Button, View} from 'react-native';
 import Map from '../components/Map';
 import PostWrapper from '../components/Post';
 
@@ -9,7 +9,13 @@ export default function Home({navigation}) {
       <Text style={styles.text}>Welcome to Super-Stooper</Text>
       <Map />
       {/* <PostWrapper /> */}
-      <Button title="ADD A SALE" onPress={() => navigation.navigate('Post')} />
+      <View style={styles.button}>
+        <Button
+          title="ADD A SALE"
+          color="purple"
+          onPress={() => navigation.navigate('Post')}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -22,5 +28,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     textAlign: 'center',
     fontSize: 25,
+  },
+  button: {
+    textAlign: 'center',
+    alignContent: 'center',
+    marginBottom: 30,
+    borderWidth: 1,
+    marginHorizontal: 30,
+    backgroundColor: '#f194ff',
+    borderRadius: 10,
   },
 });
