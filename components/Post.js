@@ -35,6 +35,8 @@ const Post = () => {
     end: '',
     stuff: '',
   });
+
+  const realm = useRealm();
   // const [number, onChangeNumber] = useState('');
   // const [saleTitle, onChangeText] = useState('')
 
@@ -45,8 +47,18 @@ const Post = () => {
 
   const handleSubmit = () => {
     console.log(formInputs);
+    realm.write(() => {
+      realm.create('UserPost', {
+        longitude: formInputs.longitude,
+        lattitude: formInputs.lattitude,
+        where: formInputs.where,
+        start: formInputs.start,
+        end: formInputs.end,
+        stuff: formInputs.stuff,
+        _id: new Realm.BSON.ObjectId(),
+      });
+    });
     Alert.alert('woo wee, you pressed the button');
-    //write the info to the sales API
   };
 
   return (
