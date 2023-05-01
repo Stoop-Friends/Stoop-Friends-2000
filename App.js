@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import Map from './components/Map';
-import Post from './components/Post';
+import PostWrapper from './components/Post';
 // import {NavigationContainer} from '@react-navigation/native';
 
 // const Stack = createNativeStackNavigator();
@@ -48,7 +48,7 @@ export default function App() {
           }}
         />
       </View> */}
-      <Post />
+      <PostWrapper />
     </View>
     // </NavigationContainer>
   );

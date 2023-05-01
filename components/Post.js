@@ -5,11 +5,11 @@ import {createRealmContext} from '@realm/react';
 
 class UserPost extends Realm.Object {
   static schema = {
-    name: 'Post',
+    name: 'UserPost',
     properties: {
       _id: 'objectId',
-      longitude: 'number',
-      lattitude: 'number',
+      longitude: 'string',
+      lattitude: 'string',
       where: 'string',
       start: 'string',
       end: 'string',
@@ -62,64 +62,58 @@ const Post = () => {
   };
 
   return (
-    <RealmProvider>
-      <View>
-        <TextInput
-          name="longitude"
-          style={styles.input}
-          onChangeText={value =>
-            setFormInputs({...formInputs, longitude: value})
-          }
-          returnKeytype="next"
-          placeholder="longitude"
-          defaultValue={formInputs.longitude}
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value =>
-            setFormInputs({...formInputs, lattitude: value})
-          }
-          placeholder="Lattitude"
-          defaultValue={formInputs.lattitude}
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value => setFormInputs({...formInputs, where: value})}
-          placeholder="where"
-          defaultValue={formInputs.where}
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value => setFormInputs({...formInputs, start: value})}
-          placeholder="start time"
-          defaultValue={formInputs.start}
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value => setFormInputs({...formInputs, end: value})}
-          placeholder="end time"
-          defaultValue={formInputs.end}
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value => setFormInputs({...formInputs, stuff: value})}
-          placeholder="what they got??"
-          defaultValue={formInputs.stuff}
-        />
+    <View>
+      <TextInput
+        name="longitude"
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, longitude: value})}
+        returnKeytype="next"
+        placeholder="longitude"
+        defaultValue={formInputs.longitude}
+        keyboardType="numeric"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, lattitude: value})}
+        placeholder="Lattitude"
+        defaultValue={formInputs.lattitude}
+        keyboardType="numeric"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, where: value})}
+        placeholder="where"
+        defaultValue={formInputs.where}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, start: value})}
+        placeholder="start time"
+        defaultValue={formInputs.start}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, end: value})}
+        placeholder="end time"
+        defaultValue={formInputs.end}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, stuff: value})}
+        placeholder="what they got??"
+        defaultValue={formInputs.stuff}
+      />
 
-        <View style={styles.button}>
-          <Button
-            // style={styles.fixToText}
+      <View style={styles.button}>
+        <Button
+          // style={styles.fixToText}
 
-            title="SUBMIT THIS STOOP SALE"
-            color="purple"
-            onPress={() => handleSubmit()}
-          />
-        </View>
+          title="SUBMIT THIS STOOP SALE"
+          color="purple"
+          onPress={() => handleSubmit()}
+        />
       </View>
-    </RealmProvider>
+    </View>
   );
 };
 
@@ -158,4 +152,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Post;
+function PostWrapper() {
+  return (
+    <RealmProvider>
+      <Post />
+    </RealmProvider>
+  );
+}
+
+export default PostWrapper;
