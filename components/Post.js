@@ -49,16 +49,17 @@ const Post = () => {
     console.log(formInputs);
     realm.write(() => {
       realm.create('UserPost', {
+        _id: new Realm.BSON.ObjectId(),
         longitude: formInputs.longitude,
         lattitude: formInputs.lattitude,
         where: formInputs.where,
         start: formInputs.start,
         end: formInputs.end,
         stuff: formInputs.stuff,
-        _id: new Realm.BSON.ObjectId(),
       });
     });
     Alert.alert('woo wee, you pressed the button');
+    console.log('Realm file is located at: ' + realm.path);
   };
 
   return (
