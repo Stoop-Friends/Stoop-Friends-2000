@@ -5,11 +5,15 @@ import {createRealmContext} from '@realm/react';
 
 class UserPost extends Realm.Object {
   static schema = {
-    name: 'Post',
+    name: 'UserPost',
     properties: {
       _id: 'objectId',
-      name: 'string',
-      description: 'string',
+      longitude: 'string',
+      lattitude: 'string',
+      where: 'string',
+      start: 'string',
+      end: 'string',
+      stuff: 'string',
     },
     primaryKey: '_id',
   };
@@ -31,6 +35,8 @@ const Post = () => {
     end: '',
     stuff: '',
   });
+
+  const realm = useRealm();
   // const [number, onChangeNumber] = useState('');
   // const [saleTitle, onChangeText] = useState('')
 
@@ -41,69 +47,73 @@ const Post = () => {
 
   const handleSubmit = () => {
     console.log(formInputs);
+    realm.write(() => {
+      realm.create('UserPost', {
+        longitude: formInputs.longitude,
+        lattitude: formInputs.lattitude,
+        where: formInputs.where,
+        start: formInputs.start,
+        end: formInputs.end,
+        stuff: formInputs.stuff,
+        _id: new Realm.BSON.ObjectId(),
+      });
+    });
     Alert.alert('woo wee, you pressed the button');
-    //write the info to the sales API
   };
 
   return (
-    <RealmProvider>
-      <View>
-        <TextInput
-          name="longitude"
-          style={styles.input}
-          onChangeText={value =>
-            setFormInputs({...formInputs, longitude: value})
-          }
-          returnKeytype="next"
-          placeholder="longitude"
-          defaultValue={formInputs.longitude}
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value =>
-            setFormInputs({...formInputs, lattitude: value})
-          }
-          placeholder="Lattitude"
-          defaultValue={formInputs.lattitude}
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value => setFormInputs({...formInputs, where: value})}
-          placeholder="where"
-          defaultValue={formInputs.where}
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value => setFormInputs({...formInputs, start: value})}
-          placeholder="start time"
-          defaultValue={formInputs.start}
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value => setFormInputs({...formInputs, end: value})}
-          placeholder="end time"
-          defaultValue={formInputs.end}
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={value => setFormInputs({...formInputs, stuff: value})}
-          placeholder="what they got??"
-          defaultValue={formInputs.stuff}
-        />
+    <View>
+      <TextInput
+        name="longitude"
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, longitude: value})}
+        returnKeytype="next"
+        placeholder="longitude"
+        defaultValue={formInputs.longitude}
+        keyboardType="numeric"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, lattitude: value})}
+        placeholder="Lattitude"
+        defaultValue={formInputs.lattitude}
+        keyboardType="numeric"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, where: value})}
+        placeholder="where"
+        defaultValue={formInputs.where}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, start: value})}
+        placeholder="start time"
+        defaultValue={formInputs.start}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, end: value})}
+        placeholder="end time"
+        defaultValue={formInputs.end}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, stuff: value})}
+        placeholder="what they got??"
+        defaultValue={formInputs.stuff}
+      />
 
-        <View style={styles.button}>
-          <Button
-            // style={styles.fixToText}
+      <View style={styles.button}>
+        <Button
+          // style={styles.fixToText}
 
-            title="SUBMIT THIS STOOP SALE"
-            color="purple"
-            onPress={() => handleSubmit()}
-          />
-        </View>
+          title="SUBMIT THIS STOOP SALE"
+          color="purple"
+          onPress={() => handleSubmit()}
+        />
       </View>
-    </RealmProvider>
+    </View>
   );
 };
 
@@ -142,4 +152,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Post;
+function PostWrapper() {
+  return (
+    <RealmProvider>
+      <Post />
+    </RealmProvider>
+  );
+}
+
+export default PostWrapper;
