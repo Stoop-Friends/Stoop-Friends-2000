@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, TextInput, StyleSheet, Button, Alert} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  TextInput,
+  StyleSheet,
+  Button,
+  Alert,
+} from 'react-native';
 import Realm from 'realm';
 import {createRealmContext} from '@realm/react';
 
@@ -26,7 +33,7 @@ const realmConfig = {
 const {RealmProvider, useRealm, useObject, useQuery} =
   createRealmContext(realmConfig);
 
-const Post = () => {
+const Post = ({navigation}) => {
   const [formInputs, setFormInputs] = useState({
     longitude: '',
     lattitude: '',
@@ -104,7 +111,6 @@ const Post = () => {
         placeholder="what they got??"
         defaultValue={formInputs.stuff}
       />
-
       <View style={styles.button}>
         <Button
           // style={styles.fixToText}
