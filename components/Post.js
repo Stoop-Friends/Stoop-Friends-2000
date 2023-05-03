@@ -10,6 +10,8 @@ import {
 import Realm from 'realm';
 import {createRealmContext} from '@realm/react';
 
+import PostMap from './PostMap';
+
 class UserPost extends Realm.Object {
   static schema = {
     name: 'UserPost',
@@ -71,6 +73,7 @@ const Post = ({navigation}) => {
 
   return (
     <View>
+      <PostMap />
       <TextInput
         name="longitude"
         style={styles.input}
@@ -135,7 +138,7 @@ const Post = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -162,6 +165,7 @@ const styles = StyleSheet.create({
 function PostWrapper() {
   return (
     <RealmProvider>
+      <PostMap />
       <Post />
     </RealmProvider>
   );
