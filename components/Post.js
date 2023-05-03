@@ -44,6 +44,15 @@ const Post = ({navigation}) => {
     end: '',
     stuff: '',
   });
+  // let [marker, setMarker] = useState({})
+
+  // let onMarkerDragEnd = (coord, index) => {
+  //   const { latLng } = coord;
+  //   const lat = latLng.lat();
+  //   const lng = latLng.lng();
+  //   index = { lat, lng };
+  //   setMarker(marker);
+  // }
 
   const realm = useRealm();
   // const [number, onChangeNumber] = useState('');

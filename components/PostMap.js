@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import {StyleSheet, Text, View} from 'react-native';
 // import Sales from './Sales';
 
-export default function PostMap() {
+export default function PostMap(props) {
+  // let marker = {lat: 40.688615, lng: -74.018907};
+  let [marker, setMarker] = useState({lat: 40.688615, lng: -74.018907});
+  // let onMarkerDragEng = (coord, index) => {
+  //   const {latLng} = coord;
+  //   const lat = latLng.lat();
+  //   const lng = latLng.lng();
+  //   marker[index] = {lat, lng};
+  //   setMarker(marker);
+  // };
+
   return (
     <MapView
       style={{
@@ -27,19 +37,26 @@ export default function PostMap() {
         longitudeDelta: 0.0421,
       }}>
       <Marker
+        coordinate={{latitude: marker.lat, longitude: marker.lng}}
+        draggable={true}
+        pinColor="#f194ff"
+        onDrag={e => {
+          // console.log(e.nativeEvent);
+          let coordinate = e.nativeEvent.coordinate;
+
+          setMarker(coordinate);
+
+          console.log('marker', marker);
+        }}
+      />
+      {/* <Marker
         coordinate={{
           latitude: 40.688615,
           longitude: -74.018907,
         }}
-        draggable
-        pinColor="black">
-        <Callout>
-          <Text>STOOP SALE</Text>
-          <Text>Address</Text>
-          <Text>Hours</Text>
-          <Text>What kinda stuff is there</Text>
-        </Callout>
-      </Marker>
+        draggable={true}
+        pinColor="black"
+      /> */}
     </MapView>
   );
 }
