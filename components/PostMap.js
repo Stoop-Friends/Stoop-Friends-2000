@@ -3,16 +3,8 @@ import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import {StyleSheet, Text, View} from 'react-native';
 // import Sales from './Sales';
 
-export default function PostMap(props) {
-  // let marker = {lat: 40.688615, lng: -74.018907};
+export default function PostMap() {
   let [marker, setMarker] = useState({lat: 40.688615, lng: -74.018907});
-  // let onMarkerDragEng = (coord, index) => {
-  //   const {latLng} = coord;
-  //   const lat = latLng.lat();
-  //   const lng = latLng.lng();
-  //   marker[index] = {lat, lng};
-  //   setMarker(marker);
-  // };
 
   return (
     <MapView

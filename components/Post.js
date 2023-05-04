@@ -44,24 +44,8 @@ const Post = ({navigation}) => {
     end: '',
     stuff: '',
   });
-  // let [marker, setMarker] = useState({})
-
-  // let onMarkerDragEnd = (coord, index) => {
-  //   const { latLng } = coord;
-  //   const lat = latLng.lat();
-  //   const lng = latLng.lng();
-  //   index = { lat, lng };
-  //   setMarker(marker);
-  // }
 
   const realm = useRealm();
-  // const [number, onChangeNumber] = useState('');
-  // const [saleTitle, onChangeText] = useState('')
-
-  // const handleChange = event => {
-  //   setFormInputs({...});
-  //   console.log(formInputs);
-  // };
 
   const handleSubmit = () => {
     console.log(formInputs);
@@ -83,6 +67,7 @@ const Post = ({navigation}) => {
   return (
     <View>
       <PostMap />
+
       <TextInput
         name="longitude"
         style={styles.input}
