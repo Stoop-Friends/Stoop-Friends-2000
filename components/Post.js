@@ -7,33 +7,13 @@ import {
   Button,
   Alert,
 } from 'react-native';
+
+// Realm stuff
 import Realm from 'realm';
-import {createRealmContext} from '@realm/react';
+import {realmContext} from './RealmContext';
+const {useRealm, useQuery} = realmContext;
 
 import PostMap from './PostMap';
-
-class UserPost extends Realm.Object {
-  static schema = {
-    name: 'UserPost',
-    properties: {
-      _id: 'objectId',
-      longitude: 'string',
-      lattitude: 'string',
-      where: 'string',
-      start: 'string',
-      end: 'string',
-      stuff: 'string',
-    },
-    primaryKey: '_id',
-  };
-}
-
-const realmConfig = {
-  schema: [UserPost],
-};
-
-const {RealmProvider, useRealm, useObject, useQuery} =
-  createRealmContext(realmConfig);
 
 const Post = ({navigation}) => {
   const [formInputs, setFormInputs] = useState({
@@ -156,13 +136,4 @@ const styles = StyleSheet.create({
   },
 });
 
-function PostWrapper() {
-  return (
-    <RealmProvider>
-      <PostMap />
-      <Post />
-    </RealmProvider>
-  );
-}
-
-export default PostWrapper;
+export default Post;

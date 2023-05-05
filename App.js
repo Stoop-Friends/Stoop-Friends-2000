@@ -8,13 +8,19 @@ import Home from './screens/home.screens';
 // import Post from './components/Post';
 import PostWrapper from './components/Post';
 
+import {realmContext} from './components/RealmContext';
+
+const {RealmProvider} = realmContext;
+
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Post" component={PostWrapper} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <RealmProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Post" component={PostWrapper} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </RealmProvider>
   );
 }
