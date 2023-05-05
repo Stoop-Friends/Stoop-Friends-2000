@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
 // import Sales from './Sales';
+import {Post} from './Post';
 
 export default function PostMap() {
   let [marker, setMarker] = useState({lat: 40.688615, lng: -74.018907});
 
   return (
+    // <SafeAreaView>
     <MapView
       style={{
         flex: 10,
@@ -50,5 +52,7 @@ export default function PostMap() {
         pinColor="black"
       /> */}
     </MapView>
+
+    // </SafeAreaView>
   );
 }
