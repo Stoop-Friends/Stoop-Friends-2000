@@ -15,9 +15,8 @@ const {useRealm, useQuery} = realmContext;
 
 import PostMap from './PostMap';
 
-const Post = ({navigation}) => {
-import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
-
+// const Post = ({navigation}) => {
+// import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 
 export const Post = ({navigation}, props) => {
   // let [postMapData, setPostMapData] = useState('');
