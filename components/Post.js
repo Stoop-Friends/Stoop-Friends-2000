@@ -7,38 +7,21 @@ import {
   Button,
   Alert,
 } from 'react-native';
+
+// Realm stuff
 import Realm from 'realm';
-import {createRealmContext} from '@realm/react';
-import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
+import {realmContext} from './RealmContext';
+const {useRealm, useQuery} = realmContext;
 
 import PostMap from './PostMap';
 
-class UserPost extends Realm.Object {
-  static schema = {
-    name: 'UserPost',
-    properties: {
-      _id: 'objectId',
-      longitude: 'string',
-      latitude: 'string',
-      where: 'string',
-      start: 'string',
-      end: 'string',
-      stuff: 'string',
-    },
-    primaryKey: '_id',
-  };
-}
+const Post = ({navigation}) => {
+import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 
-const realmConfig = {
-  schema: [UserPost],
-  deleteRealmIfMigrationNeeded: true,
-};
-
-const {RealmProvider, useRealm, useObject, useQuery} =
-  createRealmContext(realmConfig);
 
 export const Post = ({navigation}, props) => {
   // let [postMapData, setPostMapData] = useState('');
+
   const [formInputs, setFormInputs] = useState({
     longitude: '',
     latitude: '',
@@ -61,8 +44,8 @@ export const Post = ({navigation}, props) => {
     realm.write(() => {
       realm.create('UserPost', {
         _id: new Realm.BSON.ObjectId(),
-        // longitude: marker.lng.toString(),
-        // latitude: marker.lat.toString(),
+        longitude: formInputs.longitude,
+        latitude: formInputs.latitude,
         where: formInputs.where,
         start: formInputs.start,
         end: formInputs.end,
@@ -168,13 +151,4 @@ const styles = StyleSheet.create({
   },
 });
 
-function PostWrapper() {
-  return (
-    <RealmProvider>
-      <PostMap />
-      <Post />
-    </RealmProvider>
-  );
-}
-
-export default PostWrapper;
+export default Post;
