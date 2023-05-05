@@ -24,7 +24,7 @@ export default function Map() {
           latitude: 40.688615,
           longitude: -74.018907,
         }}
-        pinColor="black">
+        pinColor="#f194ff">
         <Callout>
           <Text>STOOP SALE</Text>
           <Text>Address</Text>
