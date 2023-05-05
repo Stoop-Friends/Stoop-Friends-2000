@@ -16,9 +16,15 @@ const {useRealm, useQuery} = realmContext;
 import PostMap from './PostMap';
 
 const Post = ({navigation}) => {
+import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
+
+
+export const Post = ({navigation}, props) => {
+  // let [postMapData, setPostMapData] = useState('');
+
   const [formInputs, setFormInputs] = useState({
     longitude: '',
-    lattitude: '',
+    latitude: '',
     where: '',
     start: '',
     end: '',
@@ -27,13 +33,19 @@ const Post = ({navigation}) => {
 
   const realm = useRealm();
 
+  // const handlePostMapData = event => {
+  //   let data = setPostMapData();
+  //   console.log(data);
+  //   console.log(props);
+  // };
+
   const handleSubmit = () => {
     console.log(formInputs);
     realm.write(() => {
       realm.create('UserPost', {
         _id: new Realm.BSON.ObjectId(),
         longitude: formInputs.longitude,
-        lattitude: formInputs.lattitude,
+        latitude: formInputs.latitude,
         where: formInputs.where,
         start: formInputs.start,
         end: formInputs.end,
@@ -46,22 +58,22 @@ const Post = ({navigation}) => {
 
   return (
     <View>
-      <PostMap />
-
+      {/* <PostMap handlePostMapData={postMapData} /> */}
       <TextInput
         name="longitude"
         style={styles.input}
         onChangeText={value => setFormInputs({...formInputs, longitude: value})}
         returnKeytype="next"
         placeholder="longitude"
+        // defaultValue={marker.lng.toString()}
         defaultValue={formInputs.longitude}
         keyboardType="numeric"
       />
       <TextInput
         style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, lattitude: value})}
-        placeholder="Lattitude"
-        defaultValue={formInputs.lattitude}
+        onChangeText={value => setFormInputs({...formInputs, latitude: value})}
+        placeholder="latitude"
+        defaultValue={formInputs.latitude}
         keyboardType="numeric"
       />
       <TextInput
@@ -97,6 +109,9 @@ const Post = ({navigation}) => {
           onPress={() => handleSubmit()}
         />
       </View>
+      {/* <View style={styles.button}>
+        <Button title="TEST TEST" color="purple" onPress={handlePostMapData} />
+      </View> */}
     </View>
   );
 };
