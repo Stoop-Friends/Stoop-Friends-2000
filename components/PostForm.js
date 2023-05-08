@@ -13,12 +13,9 @@ import Realm from 'realm';
 import {realmContext} from './RealmContext';
 const {useRealm, useQuery} = realmContext;
 
-import PostMap from './PostMap';
-import PostForm from './PostForm';
+// import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 
-import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
-
-export default function Post(props) {
+export default function PostForm(props) {
   // let [postMapData, setPostMapData] = useState('');
 
   const [formInputs, setFormInputs] = useState({
@@ -56,8 +53,7 @@ export default function Post(props) {
   };
 
   return (
-    <>
-      <PostMap />
+    <View>
       <TextInput
         name="longitude"
         style={styles.input}
@@ -108,25 +104,12 @@ export default function Post(props) {
           onPress={() => handleSubmit()}
         />
       </View>
-      <View style={styles.button}>
-        <Button
-          title="TEST TEST"
-          color="purple"
-          onPress={() => console.log(props)}
-        />
-      </View>
-    </>
+      {/* <View style={styles.button}>
+        <Button title="TEST TEST" color="purple" onPress={handlePostMapData} />
+      </View> */}
+    </View>
   );
 }
-
-// const styles = StyleSheet.create({
-//   input: {
-//     height: 40,
-//     margin: 12,
-//     borderWidth: 1,
-//     padding: 10,
-//   },
-// });
 
 const styles = StyleSheet.create({
   container: {
@@ -153,5 +136,3 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-
-// export default Post;
