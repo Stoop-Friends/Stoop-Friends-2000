@@ -7,6 +7,7 @@ import {
   Button,
   Alert,
 } from 'react-native';
+import getCoordinatesFromAddress from '../utils/getCoordinatesFromAddress';
 
 // Realm stuff
 import Realm from 'realm';
@@ -31,6 +32,11 @@ export const Post = ({navigation}, props) => {
   });
 
   const realm = useRealm();
+
+  // We should adjust the form so that the input is the street address and the city and we can convert that to coordinates
+  // const handleCoordinates = () => {
+  //   getCoordinatesFromAddress('192 Spencer Street', 'Brooklyn');
+  // };
 
   // const handlePostMapData = event => {
   //   let data = setPostMapData();
