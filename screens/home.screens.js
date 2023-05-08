@@ -1,22 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {SafeAreaView, StyleSheet, Text, Button, View} from 'react-native';
 import Map from '../components/Map';
 import PostWrapper from '../components/Post';
-import Geolocation from 'react-native-geolocation-service';
 
 export default function Home({navigation}) {
-  useEffect(() => {
-    Geolocation.getCurrentPosition(
-      position => {
-        console.log(position);
-      },
-      error => {
-        console.log(error.code, error.message);
-      },
-      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
-    );
-  }, []);
-
   return (
     <SafeAreaView style={styles.flex}>
       <Text style={styles.text}>Welcome to Super-Stooper</Text>

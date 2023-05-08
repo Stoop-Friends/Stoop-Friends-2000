@@ -7,7 +7,6 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import getCoordinatesFromAddress from '../utils/getCoordinatesFromAddress';
 
 // Realm stuff
 import Realm from 'realm';
