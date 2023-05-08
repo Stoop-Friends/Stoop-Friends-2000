@@ -7,7 +7,6 @@ import {
   Button,
   Alert,
 } from 'react-native';
-import getCoordinatesFromAddress from '../utils/getCoordinatesFromAddress';
 
 // Realm stuff
 import Realm from 'realm';
