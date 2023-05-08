@@ -11,7 +11,7 @@ NSString *const GOOGLE_MAPS_KEY = @"process.env.REACT_APP_GOOGLE_MAPS_API_KEY";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [GMSServices provideAPIKey:@"GOOGLE_MAPS_KEY"];
+  [GMSServices provideAPIKey:@"AIzaSyBh3UbCLRYP9wGO_aBTix6UCS8_jBDaobc"];
   self.moduleName = @"MyRealmApp";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.

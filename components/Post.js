@@ -47,7 +47,7 @@ export default function Post(props) {
     realm.write(() => {
       realm.create('UserPost', {
         _id: new Realm.BSON.ObjectId(),
-        address: formInputs.where,
+        address: formInputs.address,
         start: formInputs.start,
         end: formInputs.end,
         stuff: formInputs.stuff,
