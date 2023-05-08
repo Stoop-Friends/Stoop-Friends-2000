@@ -28,6 +28,11 @@ export default function Home({navigation}) {
           color="purple"
           onPress={() => navigation.navigate('Post')}
         />
+        <Button
+          title="ADD A SALE"
+          color="purple"
+          onPress={() => navigation.navigate('Post2')}
+        />
       </View>
     </SafeAreaView>
   );

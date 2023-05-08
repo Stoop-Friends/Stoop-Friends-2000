@@ -7,19 +7,15 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import getCoordinatesFromAddress from '../utils/getCoordinatesFromAddress';
 
 // Realm stuff
 import Realm from 'realm';
 import {realmContext} from './RealmContext';
 const {useRealm, useQuery} = realmContext;
 
-import PostMap from './PostMap';
-import PostForm from './PostForm';
+// import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 
-import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
-
-export default function Post(props) {
+export default function PostForm(props) {
   // let [postMapData, setPostMapData] = useState('');
 
   const [formInputs, setFormInputs] = useState({
@@ -32,11 +28,6 @@ export default function Post(props) {
   });
 
   const realm = useRealm();
-
-  // We should adjust the form so that the input is the street address and the city and we can convert that to coordinates
-  // const handleCoordinates = () => {
-  //   getCoordinatesFromAddress('192 Spencer Street', 'Brooklyn');
-  // };
 
   // const handlePostMapData = event => {
   //   let data = setPostMapData();
@@ -62,8 +53,7 @@ export default function Post(props) {
   };
 
   return (
-    <>
-      <PostMap />
+    <View>
       <TextInput
         name="longitude"
         style={styles.input}
@@ -114,25 +104,12 @@ export default function Post(props) {
           onPress={() => handleSubmit()}
         />
       </View>
-      <View style={styles.button}>
-        <Button
-          title="TEST TEST"
-          color="purple"
-          onPress={() => console.log(props)}
-        />
-      </View>
-    </>
+      {/* <View style={styles.button}>
+        <Button title="TEST TEST" color="purple" onPress={handlePostMapData} />
+      </View> */}
+    </View>
   );
 }
-
-// const styles = StyleSheet.create({
-//   input: {
-//     height: 40,
-//     margin: 12,
-//     borderWidth: 1,
-//     padding: 10,
-//   },
-// });
 
 const styles = StyleSheet.create({
   container: {
@@ -159,5 +136,3 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-
-// export default Post;
