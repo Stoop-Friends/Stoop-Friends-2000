@@ -23,9 +23,7 @@ export default function Post(props) {
   // let [postMapData, setPostMapData] = useState('');
 
   const [formInputs, setFormInputs] = useState({
-    longitude: '',
-    latitude: '',
-    where: '',
+    address: '',
     start: '',
     end: '',
     stuff: '',
@@ -49,7 +47,7 @@ export default function Post(props) {
     realm.write(() => {
       realm.create('UserPost', {
         _id: new Realm.BSON.ObjectId(),
-        where: formInputs.where,
+        address: formInputs.where,
         start: formInputs.start,
         end: formInputs.end,
         stuff: formInputs.stuff,
@@ -64,8 +62,8 @@ export default function Post(props) {
       <PostMap />
       <TextInput
         style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, where: value})}
-        placeholder="where"
+        onChangeText={value => setFormInputs({...formInputs, address: value})}
+        placeholder="address"
         defaultValue={formInputs.where}
       />
       <TextInput
