@@ -49,8 +49,6 @@ export default function Post(props) {
     realm.write(() => {
       realm.create('UserPost', {
         _id: new Realm.BSON.ObjectId(),
-        longitude: +formInputs.longitude,
-        latitude: +formInputs.latitude,
         where: formInputs.where,
         start: formInputs.start,
         end: formInputs.end,
@@ -64,23 +62,6 @@ export default function Post(props) {
   return (
     <>
       <PostMap />
-      <TextInput
-        name="longitude"
-        style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, longitude: value})}
-        returnKeytype="next"
-        placeholder="longitude"
-        // defaultValue={marker.lng.toString()}
-        defaultValue={formInputs.longitude}
-        keyboardType="numeric"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, latitude: value})}
-        placeholder="latitude"
-        defaultValue={formInputs.latitude}
-        keyboardType="numeric"
-      />
       <TextInput
         style={styles.input}
         onChangeText={value => setFormInputs({...formInputs, where: value})}
