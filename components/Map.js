@@ -27,7 +27,7 @@ export default function Map() {
         longitudeDelta: 0.0421,
       }}>
       <Sales />
-      <Marker
+      {/* <Marker
         coordinate={{
           latitude: 40.688615,
           longitude: -74.018907,
@@ -39,7 +39,19 @@ export default function Map() {
           <Text>Hours</Text>
           <Text>What kinda stuff is there</Text>
         </Callout>
-      </Marker>
+      </Marker> */}
+      {posts.map(singlePost => {
+        return (
+          <Marker>
+            <Callout>
+              <Text>STOOP SALE</Text>
+              <Text>Address: </Text>
+              <Text>Hours: </Text>
+              <Text>What kinda stuff is there</Text>
+            </Callout>
+          </Marker>
+        );
+      })}
     </MapView>
   );
 }

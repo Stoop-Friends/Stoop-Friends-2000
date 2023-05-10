@@ -10,11 +10,12 @@ import {
 import PostMap from './PostMap';
 import PostForm from './PostForm';
 import {Calendar} from 'react-native-calendars';
+// Function to transform address
+import useCoordinatesFromAddress from '../utils/useCoordinatesFromAddress';
 
 // Realm stuff
 import Realm from 'realm';
 import {realmContext} from './RealmContext';
-import useCoordinatesFromAddress from '../utils/useCoordinatesFromAddress';
 
 const {useRealm} = realmContext;
 
@@ -35,6 +36,9 @@ export default function Post(props) {
     end: '',
     stuff: '',
   });
+
+  const coords = useCoordinatesFromAddress('2806 Idlewood Avenue', 'Richmond');
+  console.log(coords);
 
   const realm = useRealm();
 
