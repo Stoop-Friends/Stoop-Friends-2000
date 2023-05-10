@@ -7,18 +7,22 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
+import PostMap from './PostMap';
+import PostForm from './PostForm';
+import {Calendar} from 'react-native-calendars';
 
 // Realm stuff
 import Realm from 'realm';
 import {realmContext} from './RealmContext';
 const {useRealm} = realmContext;
 
-import PostMap from './PostMap';
-import PostForm from './PostForm';
+export const Post = ({navigation}, props) => {
+  const [selected, setSelected] = useState('');
 
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 
 export default function Post(props) {
+
   // let [postMapData, setPostMapData] = useState('');
 
   const [formInputs, setFormInputs] = useState({
@@ -57,8 +61,19 @@ export default function Post(props) {
   };
 
   return (
+
+    <View>
+      {/* <PostMap handlePostMapData={postMapData} /> */}
+      <Calendar
+        onDayPress={day => {
+          // setSelected(day.dateString);
+          console.log(day);
+        }}
+      />
+
     <>
       <PostMap />
+
       <TextInput
         style={styles.input}
         onChangeText={value => setFormInputs({...formInputs, address: value})}
