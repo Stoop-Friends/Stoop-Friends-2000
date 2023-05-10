@@ -15,10 +15,13 @@ const {useRealm, useQuery} = realmContext;
 
 import PostMap from './PostMap';
 
+import {Calendar} from 'react-native-calendars';
+
 // const Post = ({navigation}) => {
 // import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 
 export const Post = ({navigation}, props) => {
+  const [selected, setSelected] = useState('');
   // let [postMapData, setPostMapData] = useState('');
 
   const [formInputs, setFormInputs] = useState({
@@ -63,6 +66,12 @@ export const Post = ({navigation}, props) => {
   return (
     <View>
       {/* <PostMap handlePostMapData={postMapData} /> */}
+      <Calendar
+        onDayPress={day => {
+          // setSelected(day.dateString);
+          console.log(day);
+        }}
+      />
       <TextInput
         name="longitude"
         style={styles.input}
