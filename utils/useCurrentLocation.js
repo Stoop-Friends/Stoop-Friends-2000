@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Geolocation from 'react-native-geolocation-service';
 
 export default function useCurrentLocation() {
+  const [coordinates, setCoordinates] = useState(null);
+
   useEffect(() => {
     Geolocation.getCurrentPosition(
       position => {
@@ -9,7 +11,7 @@ export default function useCurrentLocation() {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         };
-        return data;
+        setCoordinates(data);
       },
       error => {
         console.log(error.code, error.message);
@@ -17,4 +19,5 @@ export default function useCurrentLocation() {
       {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
     );
   }, []);
+  return coordinates;
 }
