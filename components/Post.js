@@ -14,15 +14,11 @@ import {Calendar} from 'react-native-calendars';
 // Realm stuff
 import Realm from 'realm';
 import {realmContext} from './RealmContext';
+
 const {useRealm} = realmContext;
 
-export const Post = ({navigation}, props) => {
-  const [selected, setSelected] = useState('');
-
-import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
-
 export default function Post(props) {
-
+  const [selected, setSelected] = useState('');
   // let [postMapData, setPostMapData] = useState('');
 
   const [formInputs, setFormInputs] = useState({
@@ -61,19 +57,14 @@ export default function Post(props) {
   };
 
   return (
-
-    <View>
-      {/* <PostMap handlePostMapData={postMapData} /> */}
+    <SafeAreaView>
       <Calendar
         onDayPress={day => {
           // setSelected(day.dateString);
           console.log(day);
         }}
       />
-
-    <>
       <PostMap />
-
       <TextInput
         style={styles.input}
         onChangeText={value => setFormInputs({...formInputs, address: value})}
@@ -101,7 +92,6 @@ export default function Post(props) {
       <View style={styles.button}>
         <Button
           // style={styles.fixToText}
-
           title="SUBMIT THIS STOOP SALE"
           color="purple"
           onPress={() => handleSubmit()}
@@ -114,7 +104,7 @@ export default function Post(props) {
           onPress={() => console.log(props)}
         />
       </View>
-    </>
+    </SafeAreaView>
   );
 }
 
