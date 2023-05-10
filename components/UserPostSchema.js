@@ -7,6 +7,8 @@ export class UserPost extends Realm.Object {
     properties: {
       _id: 'objectId',
       address: 'string',
+      latitude: 'string',
+      longitude: 'string',
       start: 'string',
       end: 'string',
       stuff: 'string',
