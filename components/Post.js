@@ -11,7 +11,7 @@ import {
 // Realm stuff
 import Realm from 'realm';
 import {realmContext} from './RealmContext';
-const {useRealm, useQuery} = realmContext;
+const {useRealm} = realmContext;
 
 import PostMap from './PostMap';
 import PostForm from './PostForm';

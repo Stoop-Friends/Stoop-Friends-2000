@@ -3,7 +3,15 @@ import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import {StyleSheet, Text, View} from 'react-native';
 import Sales from './Sales';
 
+//Realm stuff
+import {realmContext} from './RealmContext';
+const {useRealm, useQuery} = realmContext;
+import {UserPost} from './UserPostSchema';
+
 export default function Map() {
+  const realm = useRealm();
+  const posts = useQuery(UserPost);
+
   return (
     <MapView
       style={{flex: 10, margin: 30, borderRadius: 10}}
