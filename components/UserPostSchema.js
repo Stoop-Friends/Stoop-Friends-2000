@@ -6,9 +6,7 @@ export class UserPost extends Realm.Object {
     primaryKey: '_id',
     properties: {
       _id: 'objectId',
-      longitude: 'int',
-      lattitude: 'int',
-      where: 'string',
+      address: 'string',
       start: 'string',
       end: 'string',
       stuff: 'string',

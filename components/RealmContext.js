@@ -3,4 +3,5 @@ import {UserPost} from './UserPostSchema';
 
 export const realmContext = createRealmContext({
   schema: [UserPost],
+  deleteRealmIfMigrationNeeded: true,
 });

@@ -7,37 +7,27 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import PostMap from './PostMap';
-import PostForm from './PostForm';
-import {Calendar} from 'react-native-calendars';
 
 // Realm stuff
 import Realm from 'realm';
 import {realmContext} from './RealmContext';
-const {useRealm} = realmContext;
+const {useRealm, useQuery} = realmContext;
 
-export const Post = ({navigation}, props) => {
-  const [selected, setSelected] = useState('');
+// import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 
-import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
-
-export default function Post(props) {
-
+export default function PostForm(props) {
   // let [postMapData, setPostMapData] = useState('');
 
   const [formInputs, setFormInputs] = useState({
-    address: '',
+    longitude: '',
+    latitude: '',
+    where: '',
     start: '',
     end: '',
     stuff: '',
   });
 
   const realm = useRealm();
-
-  // We should adjust the form so that the input is the street address and the city and we can convert that to coordinates
-  // const handleCoordinates = () => {
-  //   getCoordinatesFromAddress('192 Spencer Street', 'Brooklyn');
-  // };
 
   // const handlePostMapData = event => {
   //   let data = setPostMapData();
@@ -50,7 +40,9 @@ export default function Post(props) {
     realm.write(() => {
       realm.create('UserPost', {
         _id: new Realm.BSON.ObjectId(),
-        address: formInputs.address,
+        longitude: +formInputs.longitude,
+        latitude: +formInputs.latitude,
+        where: formInputs.where,
         start: formInputs.start,
         end: formInputs.end,
         stuff: formInputs.stuff,
@@ -61,23 +53,28 @@ export default function Post(props) {
   };
 
   return (
-
     <View>
-      {/* <PostMap handlePostMapData={postMapData} /> */}
-      <Calendar
-        onDayPress={day => {
-          // setSelected(day.dateString);
-          console.log(day);
-        }}
+      <TextInput
+        name="longitude"
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, longitude: value})}
+        returnKeytype="next"
+        placeholder="longitude"
+        // defaultValue={marker.lng.toString()}
+        defaultValue={formInputs.longitude}
+        keyboardType="numeric"
       />
-
-    <>
-      <PostMap />
-
       <TextInput
         style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, address: value})}
-        placeholder="address"
+        onChangeText={value => setFormInputs({...formInputs, latitude: value})}
+        placeholder="latitude"
+        defaultValue={formInputs.latitude}
+        keyboardType="numeric"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, where: value})}
+        placeholder="where"
         defaultValue={formInputs.where}
       />
       <TextInput
@@ -107,25 +104,12 @@ export default function Post(props) {
           onPress={() => handleSubmit()}
         />
       </View>
-      <View style={styles.button}>
-        <Button
-          title="TEST TEST"
-          color="purple"
-          onPress={() => console.log(props)}
-        />
-      </View>
-    </>
+      {/* <View style={styles.button}>
+        <Button title="TEST TEST" color="purple" onPress={handlePostMapData} />
+      </View> */}
+    </View>
   );
 }
-
-// const styles = StyleSheet.create({
-//   input: {
-//     height: 40,
-//     margin: 12,
-//     borderWidth: 1,
-//     padding: 10,
-//   },
-// });
 
 const styles = StyleSheet.create({
   container: {
@@ -152,5 +136,3 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-
-// export default Post;

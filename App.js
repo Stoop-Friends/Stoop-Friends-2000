@@ -7,6 +7,7 @@ const Stack = createNativeStackNavigator();
 import Home from './screens/home.screens';
 // import Post from './components/Post';
 import PostWrapper from './components/Post';
+import Post2 from './components/Post2';
 
 import {realmContext} from './components/RealmContext';
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Post" component={PostWrapper} />
+          <Stack.Screen name="Post2" component={Post2} />
         </Stack.Navigator>
       </NavigationContainer>
     </RealmProvider>
