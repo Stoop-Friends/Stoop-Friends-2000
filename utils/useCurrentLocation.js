@@ -9,7 +9,7 @@ export default function useCurrentLocation() {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         };
-        console.log(data);
+        return data;
       },
       error => {
         console.log(error.code, error.message);

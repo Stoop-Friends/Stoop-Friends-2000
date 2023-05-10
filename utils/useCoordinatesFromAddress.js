@@ -10,7 +10,7 @@ export default async function useCoordinatesFromAddress(address, city) {
         const response = await fetch(url);
         const jsonData = await response.json();
         const data = jsonData.results[0].geometry.location;
-        console.log(data);
+        return data;
       } catch (error) {
         console.error(error);
       }
