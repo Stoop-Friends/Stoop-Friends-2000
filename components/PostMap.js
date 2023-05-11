@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
 // import Sales from './Sales';
 import Post from './Post';
 import Map from './Map';
 
-export default function PostMap(props) {
-  let [marker, setMarker] = useState({lat: 40.688615, lng: -74.018907});
+import Geolocation from 'react-native-geolocation-service';
+
+export default function PostMap({setMarker}) {
+  // let [marker, setMarker] = useState({lat: 40.688615, lng: -74.018907});
+  // console.log(props);
+  let currentLocation = {lat: 40.688615, lng: -74.018907};
 
   return (
     <>
@@ -32,15 +36,16 @@ export default function PostMap(props) {
           longitudeDelta: 0.0421,
         }}>
         <Marker
-          coordinate={{latitude: marker.lat, longitude: marker.lng}}
+          coordinate={{
+            latitude: currentLocation.lat,
+            longitude: currentLocation.lng,
+          }}
           draggable={true}
           pinColor="#f194ff"
           onDrag={e => {
             let coordinate = e.nativeEvent.coordinate;
 
             setMarker(coordinate);
-
-            console.log('marker', marker);
           }}
         />
       </MapView>
