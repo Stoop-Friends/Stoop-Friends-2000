@@ -1,4 +1,5 @@
 import React from 'react';
+import {REACT_APP_GOOGLE_MAPS_API_KEY} from '@env';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
