@@ -52,13 +52,26 @@ export default function Post2(props) {
     <>
       <PostMap setMarker={setMarker} />
       <PostForm setFormInputs={setFormInputs} />
-      <Button
-        title="tester"
-        onPress={() => {
-          handleSubmit();
-          console.log('hello', props);
-        }}
-      />
+      <View style={styles.button}>
+        <Button
+          title="POST STOOP SALE"
+          onPress={() => {
+            handleSubmit();
+            console.log('hello', props);
+          }}
+        />
+      </View>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    textAlign: 'center',
+    marginBottom: 30,
+    borderWidth: 1,
+    marginHorizontal: 30,
+    backgroundColor: '#f194ff',
+    borderRadius: 10,
+  },
+});

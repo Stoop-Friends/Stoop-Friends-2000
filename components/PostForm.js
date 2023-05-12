@@ -99,7 +99,7 @@ export default function PostForm({setFormInputs}) {
       </View> */}
       <View style={styles.button}>
         <Button
-          title="TEST TEST"
+          title="COMPELTE FORM"
           color="purple"
           onPress={() => setFormInputs(inputs)}
         />
