@@ -7,8 +7,8 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import PostMap from './PostMap';
-import PostForm from './PostForm';
+// import PostMap from './PostMap';
+// import PostForm from './PostForm';
 import {Calendar} from 'react-native-calendars';
 
 // Realm stuff
@@ -69,7 +69,7 @@ export default function Post(props) {
           console.log(day);
         }}
       />
-      <PostMap />
+      {/* <PostMap /> */}
       <TextInput
         style={styles.input}
         onChangeText={value => setFormInputs({...formInputs, address: value})}

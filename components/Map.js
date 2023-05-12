@@ -40,7 +40,9 @@ export default function Map() {
           <Text>What kinda stuff is there</Text>
         </Callout>
       </Marker> */}
-      {posts.map(singlePost => {
+
+      {/* items in map need a key!!!!! */}
+      {/* {posts.map(singlePost => {
         return (
           <Marker>
             <Callout>
@@ -51,7 +53,7 @@ export default function Map() {
             </Callout>
           </Marker>
         );
-      })}
+      })} */}
     </MapView>
   );
 }
