@@ -49,6 +49,13 @@ export default function PostMap({setMarker}) {
           }}
         />
       </MapView>
+      <Text
+        style={{
+          textAlign: 'center',
+          marginBottom: 10,
+        }}>
+        PLACE MARKER AT STOOP SALE
+      </Text>
     </>
   );
 }
