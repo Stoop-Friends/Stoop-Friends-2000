@@ -40,26 +40,6 @@ export default function Map() {
           <Text>What kinda stuff is there</Text>
         </Callout>
       </Marker> */}
-
-      {/* items in map need a key!!!!! */}
-      {/* {posts.map(singlePost => {
-        let coords = {
-          lat: parseFloat(singlePost.latitude),
-          long: parseFloat(singlePost.longitude),
-        };
-        return (
-          <Marker key={singlePost._id} coordinate={coords}>
-            <Callout>
-              <Text>STOOP SALE</Text>
-              <Text>Address: {singlePost.address} </Text>
-              <Text>
-                Hours: {singlePost.start} - {singlePost.end}
-              </Text>
-              <Text>What kinda stuff is there: {singlePost.stuff}</Text>
-            </Callout>
-          </Marker>
-        );
-      })} */}
     </MapView>
   );
 }
