@@ -7,28 +7,21 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import PostMap from './PostMap';
-import PostForm from './PostForm';
+// import PostMap from './PostMap';
+// import PostForm from './PostForm';
 import {Calendar} from 'react-native-calendars';
-// Function to transform address
-import useCoordinatesFromAddress from '../utils/useCoordinatesFromAddress';
 
 // Realm stuff
 import Realm from 'realm';
 import {realmContext} from './RealmContext';
-
 const {useRealm} = realmContext;
+
+// Function to transform address
+import useCoordinatesFromAddress from '../utils/useCoordinatesFromAddress';
 
 export default function Post(props) {
   const [selected, setSelected] = useState('');
   // let [postMapData, setPostMapData] = useState('');
-
-  // ---> This is commented out because the form does not currently have these fields
-  // const [streetAddress, setStreetAddress] = useState('');
-  // const [city, setCity] = useState('');
-
-  // ---> Coordinates object with latitude and longitude, also commented out until the state for these parameters exists...
-  // const coords = useCoordinatesFromAddress(streetAddress, city);
 
   const [formInputs, setFormInputs] = useState({
     address: '',
@@ -76,7 +69,7 @@ export default function Post(props) {
           console.log(day);
         }}
       />
-      <PostMap />
+      {/* <PostMap /> */}
       <TextInput
         style={styles.input}
         onChangeText={value => setFormInputs({...formInputs, address: value})}

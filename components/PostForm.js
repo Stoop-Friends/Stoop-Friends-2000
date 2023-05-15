@@ -15,19 +15,25 @@ const {useRealm, useQuery} = realmContext;
 
 // import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 
-export default function PostForm(props) {
+export default function PostForm({setFormInputs}) {
   // let [postMapData, setPostMapData] = useState('');
-
-  const [formInputs, setFormInputs] = useState({
-    longitude: '',
-    latitude: '',
+  let [inputs, setInputs] = useState({
+    address: '',
     where: '',
     start: '',
     end: '',
     stuff: '',
   });
 
-  const realm = useRealm();
+  // let currentInputs = {
+  //   address: '',
+  //   where: '',
+  //   start: '',
+  //   end: '',
+  //   stuff: '',
+  // };
+
+  // const realm = useRealm();
 
   // const handlePostMapData = event => {
   //   let data = setPostMapData();
@@ -35,67 +41,54 @@ export default function PostForm(props) {
   //   console.log(props);
   // };
 
-  const handleSubmit = () => {
-    console.log(formInputs);
-    realm.write(() => {
-      realm.create('UserPost', {
-        _id: new Realm.BSON.ObjectId(),
-        longitude: +formInputs.longitude,
-        latitude: +formInputs.latitude,
-        where: formInputs.where,
-        start: formInputs.start,
-        end: formInputs.end,
-        stuff: formInputs.stuff,
-      });
-    });
-    Alert.alert('woo wee, you pressed the button');
-    console.log('Realm file is located at: ' + realm.path);
-  };
+  // const handleSubmit = () => {
+  //   console.log(formInputs);
+  //   realm.write(() => {
+  //     realm.create('UserPost', {
+  //       _id: new Realm.BSON.ObjectId(),
+  //       longitude: +formInputs.longitude,
+  //       latitude: +formInputs.latitude,
+  //       where: formInputs.where,
+  //       start: formInputs.start,
+  //       end: formInputs.end,
+  //       stuff: formInputs.stuff,
+  //     });
+  //   });
+  //   Alert.alert('woo wee, you pressed the button');
+  //   console.log('Realm file is located at: ' + realm.path);
+  // };
 
   return (
     <View>
       <TextInput
-        name="longitude"
+        name="address"
         style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, longitude: value})}
+        onChangeText={value => setInputs({...inputs, address: value})}
         returnKeytype="next"
-        placeholder="longitude"
+        placeholder="address"
         // defaultValue={marker.lng.toString()}
-        defaultValue={formInputs.longitude}
-        keyboardType="numeric"
+        defaultValue={inputs.address}
       />
+
       <TextInput
         style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, latitude: value})}
-        placeholder="latitude"
-        defaultValue={formInputs.latitude}
-        keyboardType="numeric"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, where: value})}
-        placeholder="where"
-        defaultValue={formInputs.where}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, start: value})}
+        onChangeText={value => setInputs({...inputs, start: value})}
         placeholder="start time"
-        defaultValue={formInputs.start}
+        defaultValue={inputs.start}
       />
       <TextInput
         style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, end: value})}
+        onChangeText={value => setInputs({...inputs, end: value})}
         placeholder="end time"
-        defaultValue={formInputs.end}
+        defaultValue={inputs.end}
       />
       <TextInput
         style={styles.input}
-        onChangeText={value => setFormInputs({...formInputs, stuff: value})}
+        onChangeText={value => setInputs({...inputs, stuff: value})}
         placeholder="what they got??"
-        defaultValue={formInputs.stuff}
+        defaultValue={inputs.stuff}
       />
-      <View style={styles.button}>
+      {/* <View style={styles.button}>
         <Button
           // style={styles.fixToText}
 
@@ -103,10 +96,14 @@ export default function PostForm(props) {
           color="purple"
           onPress={() => handleSubmit()}
         />
-      </View>
-      {/* <View style={styles.button}>
-        <Button title="TEST TEST" color="purple" onPress={handlePostMapData} />
       </View> */}
+      <View style={styles.button}>
+        <Button
+          title="COMPELTE FORM"
+          color="purple"
+          onPress={() => setFormInputs(inputs)}
+        />
+      </View>
     </View>
   );
 }
