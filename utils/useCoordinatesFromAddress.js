@@ -7,7 +7,6 @@ export default function useCoordinatesFromAddress(address, city) {
 
   useEffect(() => {
     const encodedAdress = address.split(' ').join('%20');
-    const GOOGLE_MAPS_KEY = process.env.GOOGLE_MAPS_KEY;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAdress}%20${city}&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`;
 
     async function getCoordinatesFromAddress() {
