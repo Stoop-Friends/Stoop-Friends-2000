@@ -31,17 +31,43 @@ const dummySales = [
   },
 ];
 
+import {realmContext} from './RealmContext';
+const {useRealm, useQuery} = realmContext;
+import {UserPost} from './UserPostSchema';
+
 export default function Sales() {
-  return dummySales.map(sale => {
+  const posts = useQuery(UserPost);
+  console.log(posts);
+
+  // return dummySales.map(sale => {
+  //   return (
+  //     <Marker key={sale.id} coordinate={sale.coordinates} pinColor="black">
+  //       <Callout>
+  //         <Text>STOOP SALE</Text>
+  //         <Text>Where: {sale.where}</Text>
+  //         <Text>
+  //           Hours: {sale.hours.start} - {sale.hours.end}
+  //         </Text>
+  //         <Text>Stuff: {sale.stuff.join(', ')}</Text>
+  //       </Callout>
+  //     </Marker>
+  //   );
+  // });
+  return posts.map(singlePost => {
+    let coords = {
+      latitude: Number(singlePost.latitude),
+      longitude: Number(singlePost.longitude),
+    };
+    console.log(coords);
     return (
-      <Marker key={sale.id} coordinate={sale.coordinates} pinColor="black">
+      <Marker key={singlePost._id} coordinate={coords} pinColor="black">
         <Callout>
           <Text>STOOP SALE</Text>
-          <Text>Where: {sale.where}</Text>
+          <Text>Address: {singlePost.address} </Text>
           <Text>
-            Hours: {sale.hours.start} - {sale.hours.end}
+            Hours: {singlePost.start} - {singlePost.end}
           </Text>
-          <Text>Stuff: {sale.stuff.join(', ')}</Text>
+          <Text>What kinda stuff is there: {singlePost.stuff}</Text>
         </Callout>
       </Marker>
     );

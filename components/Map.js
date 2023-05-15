@@ -40,20 +40,6 @@ export default function Map() {
           <Text>What kinda stuff is there</Text>
         </Callout>
       </Marker> */}
-
-      {/* items in map need a key!!!!! */}
-      {/* {posts.map(singlePost => {
-        return (
-          <Marker>
-            <Callout>
-              <Text>STOOP SALE</Text>
-              <Text>Address: </Text>
-              <Text>Hours: </Text>
-              <Text>What kinda stuff is there</Text>
-            </Callout>
-          </Marker>
-        );
-      })} */}
     </MapView>
   );
 }
