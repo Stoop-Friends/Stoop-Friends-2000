@@ -24,14 +24,15 @@ export default function Post(props) {
   // let [postMapData, setPostMapData] = useState('');
 
   const [formInputs, setFormInputs] = useState({
-    address: '',
+    address: '736 Fulton Street',
+    city: 'Brooklyn',
     start: '',
     end: '',
     stuff: '',
   });
 
-  const coords = useCoordinatesFromAddress('2806 Idlewood Avenue', 'Richmond');
-  console.log(coords);
+  const coords = useCoordinatesFromAddress(formInputs.address, formInputs.city);
+  // console.log(coords);
 
   const realm = useRealm();
 
@@ -48,10 +49,13 @@ export default function Post(props) {
 
   const handleSubmit = () => {
     console.log(formInputs);
+    console.log(coords);
     realm.write(() => {
       realm.create('UserPost', {
         _id: new Realm.BSON.ObjectId(),
         address: formInputs.address,
+        latitude: coords.lat.toString(),
+        longitude: coords.lng.toString(),
         start: formInputs.start,
         end: formInputs.end,
         stuff: formInputs.stuff,
@@ -74,6 +78,12 @@ export default function Post(props) {
         style={styles.input}
         onChangeText={value => setFormInputs({...formInputs, address: value})}
         placeholder="address"
+        defaultValue={formInputs.where}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => setFormInputs({...formInputs, city: value})}
+        placeholder="city"
         defaultValue={formInputs.where}
       />
       <TextInput
