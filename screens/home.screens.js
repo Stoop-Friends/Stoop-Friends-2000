@@ -6,7 +6,7 @@ import PostWrapper from '../components/Post';
 export default function Home({navigation}) {
   return (
     <SafeAreaView style={styles.flex}>
-      <Text style={styles.text}>Welcome to Super-Stooper</Text>
+      <Text style={styles.text}>STOOP FRIENDS!</Text>
       <Map />
       {/* <PostWrapper /> */}
       <View style={styles.button}>

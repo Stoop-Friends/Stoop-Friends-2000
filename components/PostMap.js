@@ -1,17 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
-// import Sales from './Sales';
-import Post from './Post';
-import Map from './Map';
 
-import Geolocation from 'react-native-geolocation-service';
+import useCurrentLocation from '../utils/useCurrentLocation';
 
-export default function PostMap({setMarker}) {
-  // let [marker, setMarker] = useState({lat: 40.688615, lng: -74.018907});
-  // console.log(props);
-  let currentLocation = {lat: 40.688615, lng: -74.018907};
+export default function PostMap(props) {
+  const initialCoords = useCurrentLocation();
+  console.log(props);
+  const [coords, setCoords] = useState(null);
+  const setMarker = props.setMarker;
+  const defaultCoords = {
+    latitude: 40.688615,
+    longitude: -74.018907,
+  };
 
+  useEffect(() => {
+    setCoords(initialCoords);
+  }, [initialCoords]);
+  console.log('coords in postMap', coords);
+
+  const longitude = coords ? coords.longitude : defaultCoords.longitude;
+  const latitude = coords ? coords.latitude : defaultCoords.latitude;
   return (
     <>
       <MapView
@@ -30,16 +39,15 @@ export default function PostMap({setMarker}) {
         showsMyLocationButton={true}
         zoomEnabled={true}
         initialRegion={{
-          latitude: 40.688615,
-          longitude: -74.018907,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitude,
+          longitude,
+          // latitudeDelta: 0.0922,
+          // longitudeDelta: 0.0421,
+          latitudeDelta: 0.02,
+          longitudeDelta: 0.02,
         }}>
         <Marker
-          coordinate={{
-            latitude: currentLocation.lat,
-            longitude: currentLocation.lng,
-          }}
+          coordinate={coords}
           draggable={true}
           pinColor="#f194ff"
           onDrag={e => {

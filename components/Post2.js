@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
+import useCurrentLocation from '../utils/useCurrentLocation';
 
 //Realm stuff
 import Realm from 'realm';
@@ -18,8 +19,8 @@ import PostForm from './PostForm';
 import PostMap from './PostMap';
 
 export default function Post2(props) {
-  // let [marker, setMarker] = useState({lat: 40.688615, lng: -74.018907});
-  const [marker, setMarker] = useState({lat: 40.688615, lng: -74.018907});
+  const [marker, setMarker] = useState(null);
+
   const [formInputs, setFormInputs] = useState({
     address: '',
     where: '',
