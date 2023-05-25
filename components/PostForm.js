@@ -15,8 +15,11 @@ const {useRealm, useQuery} = realmContext;
 
 // import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 
-export default function PostForm({setFormInputs}) {
-  // let [postMapData, setPostMapData] = useState('');
+export default function PostForm(props) {
+  const setFormInputs = props.setFormInputs;
+
+  const [useAddress, setUseAddress] = useState(false);
+
   let [inputs, setInputs] = useState({
     address: '',
     where: '',
@@ -25,50 +28,25 @@ export default function PostForm({setFormInputs}) {
     stuff: '',
   });
 
-  // let currentInputs = {
-  //   address: '',
-  //   where: '',
-  //   start: '',
-  //   end: '',
-  //   stuff: '',
-  // };
-
-  // const realm = useRealm();
-
-  // const handlePostMapData = event => {
-  //   let data = setPostMapData();
-  //   console.log(data);
-  //   console.log(props);
-  // };
-
-  // const handleSubmit = () => {
-  //   console.log(formInputs);
-  //   realm.write(() => {
-  //     realm.create('UserPost', {
-  //       _id: new Realm.BSON.ObjectId(),
-  //       longitude: +formInputs.longitude,
-  //       latitude: +formInputs.latitude,
-  //       where: formInputs.where,
-  //       start: formInputs.start,
-  //       end: formInputs.end,
-  //       stuff: formInputs.stuff,
-  //     });
-  //   });
-  //   Alert.alert('woo wee, you pressed the button');
-  //   console.log('Realm file is located at: ' + realm.path);
-  // };
-
   return (
     <View>
-      <TextInput
-        name="address"
-        style={styles.input}
-        onChangeText={value => setInputs({...inputs, address: value})}
-        returnKeytype="next"
-        placeholder="address"
-        // defaultValue={marker.lng.toString()}
-        defaultValue={inputs.address}
-      />
+      <View>
+        <Button
+          title={!useAddress ? 'OR ENTER AN ADDRESS' : 'USE MY LOCATION'}
+          onPress={() => setUseAddress(!useAddress)}
+        />
+      </View>
+      {useAddress && (
+        <TextInput
+          name="address"
+          style={styles.input}
+          onChangeText={value => setInputs({...inputs, address: value})}
+          returnKeytype="next"
+          placeholder="address"
+          // defaultValue={marker.lng.toString()}
+          defaultValue={inputs.address}
+        />
+      )}
 
       <TextInput
         style={styles.input}
@@ -88,15 +66,7 @@ export default function PostForm({setFormInputs}) {
         placeholder="what they got??"
         defaultValue={inputs.stuff}
       />
-      {/* <View style={styles.button}>
-        <Button
-          // style={styles.fixToText}
 
-          title="SUBMIT THIS STOOP SALE"
-          color="purple"
-          onPress={() => handleSubmit()}
-        />
-      </View> */}
       <View style={styles.button}>
         <Button
           title="COMPELTE FORM"
