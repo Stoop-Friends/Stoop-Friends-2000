@@ -18,7 +18,7 @@ const {useRealm} = realmContext;
 import PostForm from './PostForm';
 import PostMap from './PostMap';
 
-export default function Post2(props) {
+export default function Post2({navigation}, props) {
   const [marker, setMarker] = useState(null);
 
   const [formInputs, setFormInputs] = useState({
@@ -52,6 +52,14 @@ export default function Post2(props) {
   return (
     <>
       <PostMap setMarker={setMarker} />
+      <Text
+        style={{
+          textAlign: 'center',
+          marginBottom: 10,
+        }}>
+        PLACE THE MARKER AT STOOP SALE LOCATION
+      </Text>
+
       <PostForm setFormInputs={setFormInputs} />
       <View style={styles.button}>
         <Button

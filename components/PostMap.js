@@ -57,13 +57,13 @@ export default function PostMap(props) {
           }}
         />
       </MapView>
-      <Text
+      {/* <Text
         style={{
           textAlign: 'center',
           marginBottom: 10,
         }}>
         PLACE MARKER AT STOOP SALE
-      </Text>
+      </Text> */}
     </>
   );
 }
