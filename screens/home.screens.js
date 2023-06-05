@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, StyleSheet, Text, Button, View} from 'react-native';
 import Map from '../components/Map';
 import PostWrapper from '../components/Post';
+import SalePost from '../components/SalePost';
 
 export default function Home({navigation}) {
   return (
@@ -21,6 +22,7 @@ export default function Home({navigation}) {
           onPress={() => navigation.navigate('Post2')}
         />
       </View>
+      <SalePost />
     </SafeAreaView>
   );
 }
