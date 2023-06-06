@@ -20,7 +20,6 @@ import PostMap from './PostMap';
 
 export default function Post2({navigation}, props) {
   const [marker, setMarker] = useState(null);
-
   const [formInputs, setFormInputs] = useState({
     address: '',
     where: '',
@@ -28,6 +27,8 @@ export default function Post2({navigation}, props) {
     end: '',
     stuff: '',
   });
+  const [completeForm, setCompleteForm] = useState(false);
+
   console.log(marker, 'from Post2');
   console.log(formInputs, 'from Post2');
 
@@ -45,31 +46,54 @@ export default function Post2({navigation}, props) {
         stuff: formInputs.stuff,
       });
     });
-    Alert.alert('woo wee, you pressed the button');
+    Alert.alert('Success! You posted a sale');
     console.log('Realm file is located at: ' + realm.path);
+    navigation.navigate('Home');
   };
 
   return (
     <>
       <PostMap setMarker={setMarker} />
-      <Text
-        style={{
-          textAlign: 'center',
-          marginBottom: 10,
-        }}>
-        PLACE THE MARKER AT STOOP SALE LOCATION
-      </Text>
+      {!completeForm ? (
+        <Text
+          style={{
+            textAlign: 'center',
+            marginBottom: 10,
+          }}>
+          PLACE THE MARKER AT STOOP SALE LOCATION
+        </Text>
+      ) : (
+        <Text
+          style={{
+            textAlign: 'center',
+            marginBottom: 10,
+            fontSize: 20,
+          }}>
+          PLEASE CONFIRM STOOP SALE INFO {'\n'}
+          START TIME: {formInputs.start} {'\n'}
+          END TIME: {formInputs.end} {'\n'}
+          WHAT'S FOR SALE: {formInputs.stuff}
+        </Text>
+      )}
 
-      <PostForm setFormInputs={setFormInputs} />
-      <View style={styles.button}>
-        <Button
-          title="POST STOOP SALE"
-          onPress={() => {
-            handleSubmit();
-            console.log('hello', props);
-          }}
+      {!completeForm && (
+        <PostForm
+          setFormInputs={setFormInputs}
+          setCompleteForm={setCompleteForm}
         />
-      </View>
+      )}
+      {/* {completeForm && <Text>Testtest</Text>} */}
+      {completeForm && (
+        <View style={styles.button}>
+          <Button
+            title="POST STOOP SALE"
+            onPress={() => {
+              handleSubmit();
+              console.log('hello', props);
+            }}
+          />
+        </View>
+      )}
     </>
   );
 }

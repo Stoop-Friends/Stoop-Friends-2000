@@ -17,6 +17,7 @@ const {useRealm, useQuery} = realmContext;
 
 export default function PostForm(props) {
   const setFormInputs = props.setFormInputs;
+  const setCompleteForm = props.setCompleteForm;
 
   const [useAddress, setUseAddress] = useState(false);
 
@@ -27,6 +28,8 @@ export default function PostForm(props) {
     end: '',
     stuff: '',
   });
+
+  let completeForm = false;
 
   return (
     <View>
@@ -69,9 +72,12 @@ export default function PostForm(props) {
 
       <View style={styles.button}>
         <Button
-          title="COMPELTE FORM"
+          title="COMPLETE FORM"
           color="purple"
-          onPress={() => setFormInputs(inputs)}
+          onPress={() => {
+            setFormInputs(inputs);
+            setCompleteForm(!completeForm);
+          }}
         />
       </View>
     </View>
